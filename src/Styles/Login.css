@@ -1,0 +1,158 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+} */
+
+.login {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: gray;
+}
+
+.container {
+  width: 500px;
+  /* height: ; */
+  background: green;
+  color: white;
+  border-radius: 10px;
+  padding: 20px 40px;
+}
+
+.container h1 {
+  font-size: 2.2rem;
+  text-align: center;
+  font-family: poppins, sans-serif;
+}
+
+.container .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  /* background: rgb(173, 118, 118); */
+  margin: 30px 0;
+}
+
+.input-box input {
+  width: 95%;
+  height: 98.2%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255 255, 255, 0.2);
+  border-radius: 4rem;
+  font-size: 1rem;
+  font-family: poppins, sans-serif;
+  padding-left: 16px;
+  padding-right: 5px;
+}
+
+.input-box input::placeholder {
+  color: white;
+  font-size: 1rem;
+  /* font-family: "Courier New", Courier, monospace; */
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.container .remember-me {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14.5px;
+  margin: 15px 0 15px;
+}
+
+.remember-me label input {
+  accent-color: white;
+  margin-right: 4px;
+  /* border-radius: .3px; */
+}
+
+.container button {
+  width: 100%;
+  height: 45px;
+  background-color: white;
+  outline: none;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-family: poppins, sans-serif;
+  font-weight: 600;
+  color: rgb(56, 55, 55);
+}
+
+.container .register-link {
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 50px 0 15px;
+  font-family: poppins, sans-serif;
+}
+
+.register-link p a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-link a:hover {
+  color: red;
+}
+
+/* /* .container {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+} 
+
+.login {
+  width: 420px;
+  background: slateblue;
+  color: black;
+}
+
+.container h1 {
+  font-size: 2.2rem;
+  text-align: center;
+  font-family: poppins, sans-serif;
+}
+
+.container .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+ background: rgb(173, 118, 118); 
+  margin: 2rem 0;
+}
+
+.input-box input {
+  width: 98.2%;
+  height: 98.2%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255 255, 255, 0.2);
+  border-radius: 4rem;
+}
+
+.input-box input::placeholder {
+  color: white;
+}
+
+.input-box .icon {
+  position: absolute;
+  color: balck;
+} */
