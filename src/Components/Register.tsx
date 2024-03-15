@@ -65,7 +65,7 @@ const Register = () => {
 
   //   setErrors(newErrors);
   //   return formValid;
-  // };
+  //  };
 
   const submitForm = (event: { preventDefault: () => void }) => {
     event.preventDefault();
@@ -85,7 +85,7 @@ const Register = () => {
       .catch((error) => {
         console.log(error);
         console.log("error log");
-        if (error.response && error.response.status === 400) {
+        if (error.response.status === 400) {
           if (error.response.data === "Email is Already exists") {
             toast.info(
               "Email is already registered. Please try with a different email."
@@ -94,6 +94,8 @@ const Register = () => {
             toast.error("All fields are required");
           } else if (error.response.data === "Invalid email format") {
             toast.error("Invalid email format");
+          }else if(error.response.data === "Invalid Password format"){
+            toast.error("Invalid Password format. Password must be 8 Characters long");
           }
         } else {
           toast.error("Invalid Credentials");
