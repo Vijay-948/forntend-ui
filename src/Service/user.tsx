@@ -13,7 +13,7 @@ export const SignUp = (user: User) => {
 }
 
 interface userLoginDetails {
-    username: string,
+    email: string,
     password: string
 }
 
