@@ -9,27 +9,29 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import LogoutIcon from '@mui/icons-material/Logout';
-import AdbIcon from "@mui/icons-material/Adb";
- 
-const Settings = ["My Profile", "Logout"];
- 
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { redirect } from "react-router";
+
 function ResponsiveAppBar() {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
- 
-  
+
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
- 
- 
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
- 
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("refreshtoken");
+    redirect("/login");
+  };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl" sx={{ color: "white" }}>
@@ -71,7 +73,7 @@ function ResponsiveAppBar() {
             MOVIETIME
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box>
- 
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -94,11 +96,10 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {Settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleLogout}>
+                <LogoutIcon sx={{ paddingRight: "10px" }} />
+                Sign out
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

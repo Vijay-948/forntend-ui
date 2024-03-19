@@ -5,24 +5,24 @@ import { ChangeEvent, useState } from "react";
 import { toast } from "react-toastify";
 import Register from "./Register";
 import { Link } from "react-router-dom";
- 
+
 const Login = () => {
   const [userLoginDetails, setUserLoginDetails] = useState({
     email: "",
     password: "",
   });
- 
+
   const handleChange = (
     event: ChangeEvent<HTMLInputElement>,
     fields: string
   ) => {
     setUserLoginDetails({ ...userLoginDetails, [fields]: event.target.value });
   };
- 
+
   const submitForm = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     console.log(userLoginDetails);
- 
+
     if (
       userLoginDetails.email.trim() === "" ||
       userLoginDetails.password.trim() === ""
@@ -30,12 +30,13 @@ const Login = () => {
       toast.error("Please Enter Details Correctly !");
       return;
     }
- 
+
     login(userLoginDetails)
       .then((jwtTokenData) => {
         console.log(jwtTokenData);
         console.log("success log");
         toast.success("user login sucessfully");
+        localStorage.setItem("token", jwtTokenData.token);
         localStorage.setItem("user", userLoginDetails.email);
       })
       .catch((error) => {
@@ -44,13 +45,13 @@ const Login = () => {
         if (error.response.status === 400) {
           if (error.response.data === "Invalid username or password") {
             toast.error("Invalid Username or Password");
-          }else {
+          } else {
             toast.info("Something went wrong. Please try again later.");
           }
         }
       });
   };
- 
+
   return (
     <>
       <div className="login">
@@ -77,18 +78,18 @@ const Login = () => {
               />
               <FaLock className="icon" />
             </div>
- 
+
             <div className="remember-me">
               <label>
                 <input type="checkbox" />
                 Remember Me
               </label>
             </div>
- 
+
             <button type="submit" onClick={submitForm}>
               Login
             </button>
- 
+
             <div className="register-link">
               <p>
                 Don't have an account? <Link to="/signup">Register</Link>
@@ -100,5 +101,5 @@ const Login = () => {
     </>
   );
 };
- 
+
 export default Login;
