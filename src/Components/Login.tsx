@@ -81,8 +81,7 @@ const Login = () => {
 
             <div className="remember-me">
               <label>
-                <input type="checkbox" />
-                Remember Me
+                <p><Link to='/resetPassword'  style={{color: 'white', textDecoration: 'none'}}>Forgot Password ?</Link></p>
               </label>
             </div>
 
