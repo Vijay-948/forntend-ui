@@ -3,7 +3,6 @@ import "../Styles/Register.css";
 import { ChangeEvent, useState } from "react";
 import { SignUp } from "../Service/user";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
 
 const Register = () => {
   const [data, setData] = useState({
@@ -95,6 +94,8 @@ const Register = () => {
             toast.error("All fields are required");
           } else if (error.response.data === "Invalid email format") {
             toast.error("Invalid email format");
+          }else if(error.response.data === "Invalid Password format"){
+            toast.error("Invalid Password format. Password must be 8 Characters long");
           }
         } else {
           toast.error("Invalid Credentials");
@@ -154,7 +155,7 @@ const Register = () => {
           </button>
           <div className="register-link">
             <p>
-              Already have an account? <Link to='/login'>Login</Link>
+              Already have an account? <a href="#register">Login</a>
             </p>
           </div>
         </form>

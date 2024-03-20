@@ -14,6 +14,7 @@ import Register from "./Components/Register";
 import Login from "./Components/Login";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import ResetPassword from "./Components/ResetPassword";
 
 const isAuthenticated = () => {
   const token = localStorage.getItem("token");
@@ -57,6 +58,7 @@ function App() {
           <Route path="/" element={<AuthRoute element={<Home />} path="/" />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/resetPassword" element={<ResetPassword/>} />
         </Routes>
       </BrowserRouter>
     </>
