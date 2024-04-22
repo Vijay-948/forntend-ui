@@ -9,12 +9,13 @@ import {
 } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
-import Home from "./Components/Home";
+// import Home from "./Components/Home";
 import Register from "./Components/Register";
 import Login from "./Components/Login";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import ResetPassword from "./Components/ResetPassword";
+import Navbar from './Components/Navbar'
 
 const isAuthenticated = () => {
   const token = localStorage.getItem("token");
@@ -55,7 +56,8 @@ function App() {
       <BrowserRouter>
         <ToastContainer />
         <Routes>
-          <Route path="/" element={<AuthRoute element={<Home />} path="/" />} />
+          {/* <Route path="/home" element={<AuthRoute element={<Home />} path="/home" />} /> */}
+          <Route path="/navbar"  element={<Navbar />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/resetPassword" element={<ResetPassword/>} />

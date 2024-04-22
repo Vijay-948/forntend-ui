@@ -13,7 +13,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { redirect } from "react-router";
 
-function ResponsiveAppBar() {
+function Home() {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
@@ -52,7 +52,7 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            MOVIETIME
+            E-Commerce
           </Typography>
           <Typography
             variant="h5"
@@ -107,4 +107,4 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
+export default Home;
