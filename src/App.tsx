@@ -16,8 +16,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import ResetPassword from "./Components/ResetPassword";
 import Navbar from './Components/Navbar'
-// import Footer from "./Components/Footer";
+import Footer from "./Components/Footer";
 import Contact from "./Components/Contact";
+import Testimonials from "./Components/Testimonials";
 
 const isAuthenticated = () => {
   const token = localStorage.getItem("token");
@@ -63,7 +64,8 @@ function App() {
           <Route path="/signup" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/resetPassword" element={<ResetPassword/>} />
-          {/* <Route path="footer" element={<Footer/>} /> */}
+          <Route path="/testimonials" element={<Testimonials/>} />
+          <Route path="footer" element={<Footer/>} />
           <Route path='/contact' element={<Contact />} />
         </Routes>
       </BrowserRouter>
