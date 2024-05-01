@@ -63,7 +63,7 @@ const Navbar = () => {
                     </li>
                     <li>
                         <Link className="models-link" to="/models">
-                            Models
+                            Products
                         </Link>
                     </li>
                     <li>
