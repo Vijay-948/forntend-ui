@@ -9,6 +9,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from './Footer';
 const Contact = () => {
     const formik = useFormik({
         initialValues: {
@@ -52,7 +53,7 @@ const Contact = () => {
     return(
         <>
         <ToastContainer />
-        <section className="contact-page">
+        <section >
             <div className="container">
                 <div className="contact-div">
                     <div className="contact-div__text">
@@ -124,6 +125,7 @@ const Contact = () => {
                 </div>
             </div>
           </section>
+          <Footer/>
         </>
     )
 
