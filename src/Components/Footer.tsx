@@ -11,7 +11,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 const sections = [
   {
     title: "Company",
-    items: ["ABout", "Blog"]
+    items: ["About", "Blog"]
   },
   {
     title: "Solutions",

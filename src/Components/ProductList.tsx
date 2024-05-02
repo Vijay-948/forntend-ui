@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 
 
 
@@ -133,6 +134,23 @@ const productList = [
 const ProductList  = () => {
     return(
         <>
+        <div className="mt-40 text-center">
+            <h1 className="text-4xl font-semibold mb-10 text-black">ProductList</h1>
+            <div className="grid grid-clos-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                {productList.map((productItems) => (
+                    <div key={productItems.id} className="border p-3 rounded-md hover:shadow-lg cursor-pointer">
+                        <img src={productItems.productImg}
+                            alt={productItems.productName}
+                            className="w-30 h-60 mb-10 mx-auto" 
+                        />
+
+                        <p className="text-center mb-3 text-red-500 font-bold">{productItems.productName}</p>
+                        <p className="text-center font-semibold text-black mb-5">&#x20b9;{productItems.price}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+        <Footer/>
         </>
     )
 }

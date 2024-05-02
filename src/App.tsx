@@ -19,6 +19,7 @@ import Navbar from './Components/Navbar'
 import Footer from "./Components/Footer";
 import Contact from "./Components/Contact";
 import Testimonials from "./Components/Testimonials";
+import ProductList from "./Components/ProductList";
 
 const isAuthenticated = () => {
   const token = localStorage.getItem("token");
@@ -67,6 +68,7 @@ function App() {
           <Route path="/testimonials" element={<Testimonials/>} />
           <Route path="footer" element={<Footer/>} />
           <Route path='/contact' element={<Contact />} />
+          <Route path='/productList' element={<ProductList/>} />
         </Routes>
       </BrowserRouter>
     </>
