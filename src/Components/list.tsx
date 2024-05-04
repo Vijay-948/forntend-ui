@@ -8,7 +8,7 @@ const list = () => {
         <>
         <Navbar />
         <Home/>
-        {/* <Footer/> */}
+        <Footer/>
         </>
     )
 }
