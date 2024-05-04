@@ -20,6 +20,8 @@ import Footer from "./Components/Footer";
 import Contact from "./Components/Contact";
 import Testimonials from "./Components/Testimonials";
 import ProductList from "./Components/ProductList";
+import Products from "./Components/Products";
+import Faq from "./Components/Faq";
 
 const isAuthenticated = () => {
   const token = localStorage.getItem("token");
@@ -69,6 +71,8 @@ function App() {
           <Route path="footer" element={<Footer/>} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/productList' element={<ProductList/>} />
+          <Route path="/product/productName" Component={Products} />
+          <Route path="/faq" element={<Faq/>} />
         </Routes>
       </BrowserRouter>
     </>
