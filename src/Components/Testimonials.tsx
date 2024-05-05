@@ -1,6 +1,7 @@
 import React from 'react';
 import img1 from '../Assests/contact-bg.png';
 import Footer from './Footer';
+import Navbar from './Navbar';
 
 
 // interface Ratings {
@@ -87,6 +88,7 @@ const testimonials = [
 const Testimonials = () => {
   return (
     <>
+    <Navbar/>
     <div className="mt-40 text-center">
       <h1 className="text-2xl font-semibold mb-4 text-black">Testimonials</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

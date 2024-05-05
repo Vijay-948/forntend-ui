@@ -1,6 +1,8 @@
 import { useState } from "react";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';    
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 const FaqList = [
     {
@@ -66,10 +68,13 @@ const Faq = () => {
         }))
     }
 
+    // console.log("answer", showAnswer);
+
 
     return(
         <>
-        <div className="max-w-lg mx-auto mt-40">
+        <Navbar/>
+        <div className="max-w-7xl mx-auto mt-40">
             <h1 className="font-bold text-center mb-10 text-2xl">Ordering with E-commerce - FAQ</h1>
             {FaqList.map(({id, question, answer}) => (
                 <div key={id} className="border border-gray-400 rounded-lg  bg-white mb-10">
@@ -115,6 +120,7 @@ const Faq = () => {
             
              
         </div>
+        <Footer/>
         </>
     )
     

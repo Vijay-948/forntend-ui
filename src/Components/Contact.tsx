@@ -10,6 +10,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from './Footer';
+import Navbar from './Navbar';
 const Contact = () => {
     const formik = useFormik({
         initialValues: {
@@ -52,6 +53,7 @@ const Contact = () => {
 //    };
     return(
         <>
+        <Navbar/>
         <ToastContainer />
         <section >
             <div className="container">
