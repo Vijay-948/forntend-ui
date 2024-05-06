@@ -22,6 +22,7 @@ import Testimonials from "./Components/Testimonials";
 import ProductList from "./Components/ProductList";
 import Products from "./Components/Products";
 import Faq from "./Components/Faq";
+import Home from "./Components/Home";
 
 const isAuthenticated = () => {
   const token = localStorage.getItem("token");
@@ -62,7 +63,7 @@ function App() {
       <BrowserRouter>
         <ToastContainer />
         <Routes>
-          {/* <Route path="/home" element={<AuthRoute element={<Home />} path="/home" />} /> */}
+          <Route path="/home"  element={<Home/>} />
           <Route path="/navbar"  element={<Navbar />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/login" element={<Login />} />
