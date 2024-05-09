@@ -27,6 +27,9 @@ const Navbar = () => {
                             <Link className='text-white font-semibold' to='/productList'>Products</Link>
                         </li>
                         <li>
+                            <Link className='text-white font-semibold' to='/aboutus'>About</Link>
+                        </li>
+                        <li>
                             <Link className='text-white font-semibold' to='/testimonials'>Testimonials</Link>
                         </li>
                         <li>
