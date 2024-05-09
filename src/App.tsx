@@ -23,6 +23,7 @@ import ProductList from "./Components/ProductList";
 import Products from "./Components/Products";
 import Faq from "./Components/Faq";
 import Home from "./Components/Home";
+import About from "./Components/About";
 
 const isAuthenticated = () => {
   const token = localStorage.getItem("token");
@@ -74,6 +75,7 @@ function App() {
           <Route path='/productList' element={<ProductList/>} />
           <Route path="/product/productName" Component={Products} />
           <Route path="/faq" element={<Faq/>} />
+          <Route path="/aboutus" element={<About/>} />
         </Routes>
       </BrowserRouter>
     </>
