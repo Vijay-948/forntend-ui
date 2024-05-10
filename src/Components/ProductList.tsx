@@ -37,7 +37,7 @@ const productList = [
     },
     {
         id: 6,
-        productImg: "https://rukminim2.flixcart.com/image/416/416/k3ncakw0pkrrdj/speaker/home-audio-speaker/q/5/8/jbl-boomboxblkeu-original-imafj9zgyenpy2rt.jpeg?q=70&crop=false",
+        productImg: "https://rukminim2.flixcart.com/image/416/416/k3ncakw0pkrrdj/speaker/home-audio-speaker/q/5/8/jbl-boomboxblkeu-original-imafj9zgyenpy2rt.jpeg",
         productName: "JBL Boombox",
         price: "26999"
     },
