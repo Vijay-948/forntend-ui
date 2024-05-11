@@ -1,3 +1,4 @@
+import { Widgets } from "@mui/icons-material";
 import Navbar from "./Navbar";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -39,14 +40,18 @@ const Home = () => {
   return(
     <>
     <Navbar />
-    <div className="max-w-[1500px] h-[780px] w-full m-auto py-16 px-4 flex mt-40 bg-red-600">
-      <div className="flex-col justify-center">
-        <div className="text-3xl font-bold mb-auto">{slides[currIndx].name}</div>
-        <div className="w-1/1 text-lg mt-auto text-center">{slides[currIndx].description}</div>
+    <div className="max-w-[1500px] h-[780px] w-full m-auto py-16 px-20 flex mt-40 rounded-md  relative gap-15 ">
+      <div className="w-1/2 flex flex-col justify-center gap-20">
+        <div className="text-3xl font-bold mb-4">{slides[currIndx].name}</div>
+        <div className="text-lg mb-8">{slides[currIndx].description}</div>
       </div>
 
-      <div>
-        <div className="w-full h-full rounded-2xl">
+      <div className="w-1/2 relative z-index:1  absolute inset-0" style={{ zIndex: '-1', filter: 'grayscale(100%)' }}>
+        <div className="w-full h-full rounded-2xl bg-center bg-no-repeat duration-500  absolute inset-0"
+            style={{backgroundImage: `url(${slides[0].imgUrl})`, zIndex: '0', transform: 'rotateY(20deg) rotateX(10deg)', boxShadow: '0 20px 50px rgba(0,0,255,0.5)'}}>
+        </div>
+        <div className="hidden group-hover:block absolute text-blue-600">
+          <ArrowBackIosNewIcon/>
 
         </div>
 
