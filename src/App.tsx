@@ -24,6 +24,7 @@ import Products from "./Components/Products";
 import Faq from "./Components/Faq";
 import Home from "./Components/Home";
 import About from "./Components/About";
+import EmailVerificationCode from "./Authentication/EmailVerificationCode";
 
 const isAuthenticated = () => {
   const token = localStorage.getItem("token");
@@ -76,6 +77,8 @@ function App() {
           <Route path="/product/productName" Component={Products} />
           <Route path="/faq" element={<Faq/>} />
           <Route path="/aboutus" element={<About/>} />
+          <Route path='/pin' element={<EmailVerificationCode/>} />
+          
         </Routes>
       </BrowserRouter>
     </>
