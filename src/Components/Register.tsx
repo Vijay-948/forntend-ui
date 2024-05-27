@@ -72,8 +72,11 @@ const Register = () => {
     event.preventDefault();
 
     SignUp(data)
-      .then((response) => {
+      .then((response: any) => {
         console.log(response);
+        localStorage.setItem('email', response.data.email);
+        localStorage.setItem('firstName', response.firstName);
+        localStorage.setItem('lastName', response.lastName);
         console.log("success log");
         toast.success("User Registered Successfully");
         setData({
@@ -83,7 +86,7 @@ const Register = () => {
           password: "",
         });
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.log(error);
         console.log("error log");
         if (error.response.status === 400) {

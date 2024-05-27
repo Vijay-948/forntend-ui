@@ -1,15 +1,9 @@
-import { AxiosClient } from "../Common/AxiosClient";
+import { axiosClient } from "../Common/AxiosClient";
+import { UserDetails } from "../models/user.model";
 
 
-interface User {
-    firstName: string,
-    lastName: string,
-    email: string,
-    password: string
-    
-}
-export const SignUp = (user: User) => {
-    return AxiosClient.post('/api/v1/auth/register', user).then((response) => response.data)
+export async function SignUp(user: UserDetails) {
+    return axiosClient.post('/api/v1/auth/register', user)
 }
 
 interface userLoginDetails {
@@ -18,7 +12,11 @@ interface userLoginDetails {
 }
 
 export const login = (user: userLoginDetails) => {
-    return AxiosClient.post('/api/v1/auth/login', user).then((response) => response.data);
+    return axiosClient.post('/api/v1/auth/login', user).then((response) => response.data);
 
+}
+
+export async function  verifyOtp(req: any){
+    return axiosClient.post('/api/v1/auth/verify', req);
 }
 
