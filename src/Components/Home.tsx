@@ -3,8 +3,9 @@ import Navbar from "./Navbar";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import About from "./About";
+import { useNavigate } from "react-router-dom";
 
 const slides = [
   {
@@ -36,6 +37,7 @@ const slides = [
 
 const Home = () => {
   const [currIndx, setCurrIndx] = useState(0);
+  const navigate = useNavigate();
 
   const prevSlide = () => {
     const isFirstSlide = currIndx === 0;
@@ -52,6 +54,14 @@ const Home = () => {
   const goToSlide = (slideIndex: any) => {
     setCurrIndx(slideIndex);
   }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if(!token){
+      navigate('/login')
+
+    }
+  })
 
 
   return(

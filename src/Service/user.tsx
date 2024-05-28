@@ -16,6 +16,10 @@ export const login = (user: userLoginDetails) => {
 
 }
 
+export async function sendOTP(req: any){
+    return axiosClient.post('/api/v1/auth/sent', req);
+}
+
 export async function  verifyOtp(req: any){
     return axiosClient.post('/api/v1/auth/verify', req);
 }

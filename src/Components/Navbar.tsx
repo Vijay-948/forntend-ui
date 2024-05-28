@@ -1,15 +1,30 @@
 import { useState } from 'react';
 // import '../Styles/Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Tooltip } from '@mui/material';
+import { AccountCircleRounded } from '@mui/icons-material';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const Navbar = () => {
 
     const [openMenu, setOpenMenu] = useState(false);
+    const [profileMenu, setProfileMenu] = useState(false);
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setOpenMenu(!openMenu);
+    }
+
+    const toggleProfileMenu = () => {
+        setProfileMenu(!profileMenu);
+    }
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/login');
+        
     }
 
     return(
@@ -44,6 +59,23 @@ const Navbar = () => {
                     <button onClick={toggleMenu} className='sm:hidden text-white'>
                         <MenuIcon  />
                     </button>
+                    <div className='relative'>
+                        <Tooltip title='Logout'>
+                            <button onClick={toggleProfileMenu} className='text-white'>
+                                <AccountCircleRounded sx={{fontSize: '50px'}}/>
+                            </button>
+                        </Tooltip>
+                        {profileMenu && (
+                            <div className='absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20'>
+                                <button
+                                    onClick={handleLogout}
+                                    className='block px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-left'
+                                >
+                                    <LogoutIcon/>  Logout
+                                </button>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
             {openMenu && (

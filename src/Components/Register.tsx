@@ -3,9 +3,13 @@ import "../Styles/Register.css";
 import { ChangeEvent, useState } from "react";
 import { SignUp } from "../Service/user";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { RotatingLines } from "react-loader-spinner";
 
 const Register = () => {
+  const [loading, setLoading] = useState(false);
+  const [redirectToNextPage, setRedirectToNextPage] = useState(false);
+  const navigate = useNavigate();
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -19,6 +23,7 @@ const Register = () => {
     email: "",
     password: "",
   });
+  
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement>,
@@ -70,15 +75,16 @@ const Register = () => {
 
   const submitForm = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-
+    localStorage.setItem('email',data.email);
+    localStorage.setItem('name', `${data.firstName} ${data.lastName}`)
+    setLoading(true);
     SignUp(data)
       .then((response: any) => {
         console.log(response);
-        localStorage.setItem('email', response.data.email);
-        localStorage.setItem('firstName', response.firstName);
-        localStorage.setItem('lastName', response.lastName);
         console.log("success log");
+        setLoading(false);
         toast.success("User Registered Successfully");
+        setRedirectToNextPage(true)
         setData({
           firstName: "",
           lastName: "",
@@ -89,6 +95,7 @@ const Register = () => {
       .catch((error: any) => {
         console.log(error);
         console.log("error log");
+        setLoading(false);
         if (error.response.status === 400) {
           if (error.response.data === "Email is Already exists") {
             toast.info(
@@ -112,6 +119,11 @@ const Register = () => {
     //toast.error("Please fill out the form correctly");
     //}
   };
+
+  if(redirectToNextPage){
+    navigate('/pin');
+    return null;
+  }
 
   return (
     <div className="login">
@@ -166,6 +178,16 @@ const Register = () => {
           </div>
         </form>
       </div>
+      {loading && (
+        <div className="fixed inset-0 bg-white-700 bg-opacity-50 flex items-center justify-center z-50">
+          <RotatingLines
+            strokeColor="gray"
+            strokeWidth="6"
+            animationDuration="0.47"
+            width="96"
+          />
+        </div>
+      )}
     </div>
   );
 };
