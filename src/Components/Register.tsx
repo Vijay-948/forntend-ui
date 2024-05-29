@@ -23,7 +23,6 @@ const Register = () => {
     email: "",
     password: "",
   });
-  
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement>,
@@ -75,8 +74,8 @@ const Register = () => {
 
   const submitForm = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    localStorage.setItem('email',data.email);
-    localStorage.setItem('name', `${data.firstName} ${data.lastName}`)
+    localStorage.setItem("email", data.email);
+    localStorage.setItem("name", `${data.firstName} ${data.lastName}`);
     setLoading(true);
     SignUp(data)
       .then((response: any) => {
@@ -84,7 +83,7 @@ const Register = () => {
         console.log("success log");
         setLoading(false);
         toast.success("User Registered Successfully");
-        setRedirectToNextPage(true)
+        setRedirectToNextPage(true);
         setData({
           firstName: "",
           lastName: "",
@@ -120,8 +119,8 @@ const Register = () => {
     //}
   };
 
-  if(redirectToNextPage){
-    navigate('/pin');
+  if (redirectToNextPage) {
+    navigate("/pin");
     return null;
   }
 

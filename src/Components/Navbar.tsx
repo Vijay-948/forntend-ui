@@ -1,110 +1,125 @@
-import { useState } from 'react';
+import { useState } from "react";
 // import '../Styles/Navbar.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 // import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import MenuIcon from '@mui/icons-material/Menu';
-import { Tooltip } from '@mui/material';
-import { AccountCircleRounded } from '@mui/icons-material';
-import LogoutIcon from '@mui/icons-material/Logout';
+import MenuIcon from "@mui/icons-material/Menu";
+import { Tooltip } from "@mui/material";
+import { AccountCircleRounded } from "@mui/icons-material";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const Navbar = () => {
+  const [openMenu, setOpenMenu] = useState(false);
+  const [profileMenu, setProfileMenu] = useState(false);
+  const navigate = useNavigate();
 
-    const [openMenu, setOpenMenu] = useState(false);
-    const [profileMenu, setProfileMenu] = useState(false);
-    const navigate = useNavigate();
+  const toggleMenu = () => {
+    setOpenMenu(!openMenu);
+  };
 
-    const toggleMenu = () => {
-        setOpenMenu(!openMenu);
-    }
+  const toggleProfileMenu = () => {
+    setProfileMenu(!profileMenu);
+  };
 
-    const toggleProfileMenu = () => {
-        setProfileMenu(!profileMenu);
-    }
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.clear();
+    navigate("/login");
+  };
 
-    const handleLogout = () => {
-        localStorage.removeItem('token');
-        navigate('/login');
-        
-    }
-
-    return(
-        <nav className="bg-gray-800 p-8 fixed top-0 w-full z-50 rounded-md shadow-xl">
-            <div className='max-w-full  sm:px-6 lg:px-8 flex justify-between items-center'>
-                <div className='flex items-center'>
-                    <Link to="/home" onClick={() =>  window.scrollTo(0,0)} className='text-white mr-4'>
-                        <h4 className='text-2xl font-bold text-left'>E-commerce Store</h4>
-                    </Link>
-                    <ul className='hidden sm:flex space-x-10 ml-64'>
-                        <li>
-                            <Link className='text-white font-semibold' to='/home'>Home</Link>
-                        </li>
-                        <li>
-                            <Link className='text-white font-semibold' to='/productList'>Products</Link>
-                        </li>
-                        <li>
-                            <Link className='text-white font-semibold' to='/aboutus'>About</Link>
-                        </li>
-                        <li>
-                            <Link className='text-white font-semibold' to='/testimonials'>Testimonials</Link>
-                        </li>
-                        <li>
-                            <Link className='text-white font-semibold' to='/faq'>FAQ</Link>
-                        </li>
-                        <li>
-                            <Link className='text-white font-semibold' to='/contact'>Contact</Link>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <button onClick={toggleMenu} className='sm:hidden text-white'>
-                        <MenuIcon  />
-                    </button>
-                    <div className='relative'>
-                        <Tooltip title='Logout'>
-                            <button onClick={toggleProfileMenu} className='text-white'>
-                                <AccountCircleRounded sx={{fontSize: '50px'}}/>
-                            </button>
-                        </Tooltip>
-                        {profileMenu && (
-                            <div className='absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20'>
-                                <button
-                                    onClick={handleLogout}
-                                    className='block px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-left'
-                                >
-                                    <LogoutIcon/>  Logout
-                                </button>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </div>
-            {openMenu && (
-                <ul className='bg-gray-700 inline-block'>
-                    <li>
-                        <Link className='text-white py-2' to='/productList'>Products</Link>
-                    </li>
-                    <li>
-                        <Link className='text-white py-2' to='/testimonials'>Testimonials</Link>
-                    </li>
-                    <li>
-                        <Link className='text-white py-2' to='/faq'>FAQ</Link>
-                    </li>
-                    <li>
-                        <Link className='text-white py-2' to='/contact'>Contact</Link>
-                    </li>
-                </ul>
+  return (
+    <nav className="bg-gray-800 p-8 fixed top-0 w-full z-50 rounded-md shadow-xl">
+      <div className="max-w-full  sm:px-6 lg:px-8 flex justify-between items-center">
+        <div className="flex items-center">
+          <Link
+            to="/home"
+            onClick={() => window.scrollTo(0, 0)}
+            className="text-white mr-4"
+          >
+            <h4 className="text-2xl font-bold text-left">E-commerce Store</h4>
+          </Link>
+          <ul className="hidden sm:flex space-x-10 ml-64">
+            <li>
+              <Link className="text-white font-semibold" to="/home">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link className="text-white font-semibold" to="/productList">
+                Products
+              </Link>
+            </li>
+            <li>
+              <Link className="text-white font-semibold" to="/aboutus">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link className="text-white font-semibold" to="/testimonials">
+                Testimonials
+              </Link>
+            </li>
+            <li>
+              <Link className="text-white font-semibold" to="/faq">
+                FAQ
+              </Link>
+            </li>
+            <li>
+              <Link className="text-white font-semibold" to="/contact">
+                Contact
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <button onClick={toggleMenu} className="sm:hidden text-white">
+            <MenuIcon />
+          </button>
+          <div className="relative">
+            <Tooltip title="Logout">
+              <button onClick={toggleProfileMenu} className="text-white">
+                <AccountCircleRounded sx={{ fontSize: "50px" }} />
+              </button>
+            </Tooltip>
+            {profileMenu && (
+              <div className="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
+                <button
+                  onClick={handleLogout}
+                  className="block px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-left"
+                >
+                  <LogoutIcon /> Logout
+                </button>
+              </div>
             )}
-
-        </nav>
-
-    );
-
-    
-    
-
-   
-
-}
+          </div>
+        </div>
+      </div>
+      {openMenu && (
+        <ul className="bg-gray-700 inline-block">
+          <li>
+            <Link className="text-white py-2" to="/productList">
+              Products
+            </Link>
+          </li>
+          <li>
+            <Link className="text-white py-2" to="/testimonials">
+              Testimonials
+            </Link>
+          </li>
+          <li>
+            <Link className="text-white py-2" to="/faq">
+              FAQ
+            </Link>
+          </li>
+          <li>
+            <Link className="text-white py-2" to="/contact">
+              Contact
+            </Link>
+          </li>
+        </ul>
+      )}
+    </nav>
+  );
+};
 
 export default Navbar;
 
@@ -166,19 +181,6 @@ export default Navbar;
     }
     
    */
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
  return(
@@ -266,9 +268,4 @@ export default Navbar;
         </nav>
         </>
 
-    );*/ 
-
-
-
-    
-       
+    );*/
