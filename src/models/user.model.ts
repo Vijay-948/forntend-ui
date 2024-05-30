@@ -5,3 +5,8 @@ export interface UserDetails{
     password: string | undefined;
     isActive?: boolean;
 }
+
+export interface userLoginDetails {
+    email: string | undefined;
+    password: string | undefined;
+}

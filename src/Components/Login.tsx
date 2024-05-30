@@ -41,27 +41,20 @@ const Login = () => {
         console.log(jwtTokenData);
         console.log("success log");
         toast.success("user login sucessfully");
-        localStorage.setItem("token", jwtTokenData.token);
+        localStorage.setItem("token", jwtTokenData.data.token);
         localStorage.setItem("user", userLoginDetails.email);
-        setRedirectToNextPage(true)
+        setRedirectToNextPage(true);
         setLoader(false);
-
       })
       .catch((error) => {
         console.log(error);
         console.log("error log");
-        if (error.response.status === 400) {
-          if (error.response.data === "Invalid username or password") {
-            toast.error("Invalid Username or Password");
-          } else {
-            toast.info("Something went wrong. Please try again later.");
-          }
-        }
+        toast.error(error.response.data);
       });
   };
 
-  if(redirectToNextPage){
-    navigate('/home');
+  if (redirectToNextPage) {
+    navigate("/home");
   }
 
   return (
@@ -93,7 +86,14 @@ const Login = () => {
 
             <div className="remember-me">
               <label>
-                <p><Link to='/resetPassword'  style={{color: 'white', textDecoration: 'none'}}>Forgot Password ?</Link></p>
+                <p>
+                  <Link
+                    to="/resetPassword"
+                    style={{ color: "white", textDecoration: "none" }}
+                  >
+                    Forgot Password ?
+                  </Link>
+                </p>
               </label>
             </div>
 
@@ -109,15 +109,15 @@ const Login = () => {
           </form>
         </div>
         {loader && (
-        <div className="fixed inset-0 bg-white-700 bg-opacity-50 flex items-center justify-center z-50">
-          <RotatingLines
-            strokeColor="gray"
-            strokeWidth="6"
-            animationDuration="0.67"
-            width="96"
-          />
-        </div>
-      )}
+          <div className="fixed inset-0 bg-white-700 bg-opacity-50 flex items-center justify-center z-50">
+            <RotatingLines
+              strokeColor="gray"
+              strokeWidth="6"
+              animationDuration="0.67"
+              width="96"
+            />
+          </div>
+        )}
       </div>
     </>
   );

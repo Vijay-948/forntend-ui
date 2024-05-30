@@ -5,6 +5,10 @@ import "react-toastify/dist/ReactToastify.css";
 // import { RotatingLines } from "react-loader-spinner";
 import { ToastContainer } from "react-toastify";
 
+const getLoginUrl = () => {
+  return `/signup?form=${window.location.pathname + window.location.search}`;
+};
+
 function App() {
   const token = localStorage.getItem("token");
   // const navigate = useNavigate();
@@ -19,17 +23,13 @@ function App() {
 
   return (
     <>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-      />
+      <ToastContainer />
       {token ? (
         <div id="detail">
           <Outlet />
         </div>
       ) : (
-        <Navigate to={"/signup"} />
+        <Navigate to={getLoginUrl()} />
       )}
     </>
   );
