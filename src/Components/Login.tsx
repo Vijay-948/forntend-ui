@@ -36,11 +36,13 @@ const Login = () => {
       return;
     }
 
+    // const Email = localStorage.setItem("email", userLoginDetails.email);
+
     login(userLoginDetails)
       .then((jwtTokenData) => {
         console.log(jwtTokenData);
         console.log("success log");
-        toast.success("user login sucessfully");
+        toast.success(`${userLoginDetails.email} login sucessfully`);
         localStorage.setItem("token", jwtTokenData.data.token);
         localStorage.setItem("user", userLoginDetails.email);
         setRedirectToNextPage(true);

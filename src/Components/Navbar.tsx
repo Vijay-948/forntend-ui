@@ -3,9 +3,11 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import { Tooltip } from "@mui/material";
 import { AccountCircleRounded } from "@mui/icons-material";
 import LogoutIcon from "@mui/icons-material/Logout";
+// import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -27,53 +29,60 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 p-8 fixed top-0 w-full z-50 rounded-md shadow-xl">
-      <div className="max-w-full  sm:px-6 lg:px-8 flex justify-between items-center">
-        <div className="flex items-center">
-          <Link
-            to="/home"
-            onClick={() => window.scrollTo(0, 0)}
-            className="text-white mr-4"
-          >
-            <h4 className="text-2xl font-bold text-left">E-commerce Store</h4>
-          </Link>
-          <ul className="hidden sm:flex space-x-10 ml-64">
+    <>
+      <div className="fixed w-full bg-gray-800 text-white p-5 shadow-2xl rounded-lg z-10 top-0">
+        <nav className="hidden lg:flex justify-around items-center h-16">
+          <div className="text-2xl font-semibold">E-Commerce Store</div>
+          <ul className="flex gap-8 list-none text- xl">
             <li>
-              <Link className="text-white font-semibold" to="/home">
+              <Link
+                className="text-white font-semibold hover:text-red-500"
+                to="/home"
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link className="text-white font-semibold" to="/productList">
+              <Link
+                className="text-white font-semibold hover:text-red-500"
+                to="/productList"
+              >
                 Products
               </Link>
             </li>
             <li>
-              <Link className="text-white font-semibold" to="/aboutus">
+              <Link
+                className="text-white font-semibold hover:text-red-500"
+                to="/aboutus"
+              >
                 About
               </Link>
             </li>
             <li>
-              <Link className="text-white font-semibold" to="/testimonials">
+              <Link
+                className="text-white font-semibold hover:text-red-500"
+                to="/testimonials"
+              >
                 Testimonials
               </Link>
             </li>
             <li>
-              <Link className="text-white font-semibold" to="/faq">
+              <Link
+                className="text-white font-semibold hover:text-red-500"
+                to="/faq"
+              >
                 FAQ
               </Link>
             </li>
             <li>
-              <Link className="text-white font-semibold" to="/contact">
+              <Link
+                className="text-white font-semibold hover:text-red-500"
+                to="/contact"
+              >
                 Contact
               </Link>
             </li>
           </ul>
-        </div>
-        <div>
-          <button onClick={toggleMenu} className="sm:hidden text-white">
-            <MenuIcon />
-          </button>
           <div className="relative">
             <Tooltip title="Logout">
               <button onClick={toggleProfileMenu} className="text-white">
@@ -91,181 +100,93 @@ const Navbar = () => {
               </div>
             )}
           </div>
-        </div>
+        </nav>
       </div>
-      {openMenu && (
-        <ul className="bg-gray-700 inline-block">
-          <li>
-            <Link className="text-white py-2" to="/productList">
-              Products
-            </Link>
-          </li>
-          <li>
-            <Link className="text-white py-2" to="/testimonials">
-              Testimonials
-            </Link>
-          </li>
-          <li>
-            <Link className="text-white py-2" to="/faq">
-              FAQ
-            </Link>
-          </li>
-          <li>
-            <Link className="text-white py-2" to="/contact">
-              Contact
-            </Link>
-          </li>
-        </ul>
-      )}
-    </nav>
+
+      <div className="lg:hidden fixed w-full bg-gray-800 text-white shadow-2xl z-10 top-0">
+        <nav className="flex justify-between items-center h-16 px-4">
+          <div className="text-2xl font-semibold">E-commerce Store</div>
+          <div className="relative">
+            <div className="cursor-pointer" onClick={toggleMenu}>
+              {openMenu ? (
+                <CloseIcon fontSize="large" />
+              ) : (
+                <MenuIcon fontSize="large" />
+              )}
+            </div>
+            <ul
+              className={`absolute top-full right-0 bg-gray-900 shadow-2xl list-none hover:bg-gray-300 transition-max-heght overflow-hidden  ${
+                openMenu ? "max-h-80" : "max-h-0"
+              }`}
+            >
+              <li>
+                <Link
+                  to="/home"
+                  className="block px-4 py-2 hover:bg-gray-800"
+                  onClick={toggleMenu}
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/productList"
+                  className="block px-4 py-2 hover:bg-gray-800"
+                  onClick={toggleMenu}
+                >
+                  Products
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/aboutus"
+                  className="block px-4 py-2 hover:bg-gray-800"
+                  onClick={toggleMenu}
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/testimonials"
+                  className="block px-4 py-2 hover:bg-gray-800"
+                  onClick={toggleMenu}
+                >
+                  Testimonials
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/faq"
+                  className="block px-4 py-2 hover:bg-gray-800"
+                  onClick={toggleMenu}
+                >
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="block px-4 py-2 hover:bg-gray-800"
+                  onClick={toggleMenu}
+                >
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className="block px-4 py-2 hover:bg-gray-800"
+                >
+                  <LogoutIcon /> Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </>
   );
 };
 
 export default Navbar;
-
-/* return (
-            <nav className="bg-gray-800 p-4">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-                    <div className="flex items-center">
-                        <Link to="/" onClick={() => window.scrollTo(0, 0)} className="text-white mr-4">
-                            <h4>E-Commerce Store</h4>
-                        </Link>
-                        <ul className="hidden sm:flex space-x-4">
-                            <li>
-                                <Link className="text-white" to="/">Home</Link>
-                            </li>
-                            <li>
-                                <Link className="text-white" to="/models">Products</Link>
-                            </li>
-                            <li>
-                                <Link className="text-white" to="/testimonials">Testimonials</Link>
-                            </li>
-                            <li>
-                                <Link className="text-white" to="/faq">FAQ</Link>
-                            </li>
-                            <li>
-                                <Link className="text-white" to="/contact">Contact</Link>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="flex items-center">
-                        <button className="text-white hidden sm:block mr-4">
-                            <ShoppingCartIcon />
-                        </button>
-                        <button onClick={toggleMenu} className="text-white sm:hidden">
-                            Menu
-                        </button>
-                    </div>
-                </div>
-                {openMenu && (
-                    <ul className="sm:hidden bg-gray-700 p-2">
-                        <li>
-                            <Link className="block text-white" to="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link className="block text-white" to="/models">Products</Link>
-                        </li>
-                        <li>
-                            <Link className="block text-white" to="/testimonials">Testimonials</Link>
-                        </li>
-                        <li>
-                            <Link className="block text-white" to="/faq">FAQ</Link>
-                        </li>
-                        <li>
-                            <Link className="block text-white" to="/contact">Contact</Link>
-                        </li>
-                    </ul>
-                )}
-            </nav>
-        );
-    }
-    
-   */
-
-/*
- return(
-        <>
-        <nav>
-            {/* <div>
-                <div>
-                    <i className="fa-solid fa-xmark"></i>
-                </div>
-                <ul className="mobile-navbar__links">
-                    <li>
-                        <Link onClick={handleNav} to="/">
-                            Home
-                        </Link>
-                    </li>
-                    <li>
-                        <Link onClick={handleNav} to='/about'>
-                            About
-                        </Link>
-                    </li>
-                    <li>
-                        <Link onClick={handleNav} to="/models">
-                            Models
-                        </Link>
-                    </li>
-                    <li>
-                        <Link onClick={handleNav} to="/testimonials">
-                            Testimonials
-                        </Link>
-                    </li>
-                    <li>
-                        <Link onClick={handleNav} to="/contact">
-                            Contact
-                        </Link>
-                    </li>
-                </ul>
-            </div> 
-
-            <div className="">
-                <div className="navbar_img">
-                    <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-                         <img src={Logo} alt="Vehicle-log" />                     
-                    </Link> 
-                    <h4>E- Commerce Store</h4>
-                </div>
-                <ul className="navbar__links">
-                    <li>
-                        <Link className="home-link" to="/">
-                            Home
-                        </Link>
-                    </li>
-                    <li>
-                        <Link className="models-link" to="/models">
-                            Products
-                        </Link>
-                    </li>
-                    <li>
-                        <Link className="testi-link" to="/testimonials">
-                            Testimonials
-                        </Link>
-                    </li>
-                    <li>
-                        <Link className="contact-link" to="/faq">
-                            FAQ
-                        </Link>
-                    </li>
-                    <li>
-                        <Link className="contact-link" to="/contact">
-                            Contact
-                        </Link>
-                    </li>
-                </ul>
-                {/* <div className="navbar__buttons">
-                    <Link className="navbar__buttons__register" to="/">
-                        Register
-                    </Link>
-                </div> 
-
-                {/* <div>
-                    <button style={{justifyContent:'right', alignItems:'right'}}>
-                        <ShoppingCartIcon/>
-                    </button>
-                </div> 
-            </div>
-        </nav>
-        </>
-
-    );*/

@@ -84,6 +84,7 @@ const Register = () => {
         setLoading(false);
         toast.success("User Registered Successfully");
         setRedirectToNextPage(true);
+        localStorage.setItem('token', response.token);
         setData({
           firstName: "",
           lastName: "",
