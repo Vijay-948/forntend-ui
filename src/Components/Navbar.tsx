@@ -32,7 +32,9 @@ const Navbar = () => {
     <>
       <div className="fixed w-full bg-gray-800 text-white p-5 shadow-2xl rounded-lg z-10 top-0">
         <nav className="hidden lg:flex justify-around items-center h-16">
-          <div className="text-2xl font-semibold">E-Commerce Store</div>
+          <div className="text-2xl font-semibold">
+            <Link to="/home">E-Commerce Store</Link>
+          </div>
           <ul className="flex gap-8 list-none text- xl">
             <li>
               <Link
