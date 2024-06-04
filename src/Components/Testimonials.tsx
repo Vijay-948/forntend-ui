@@ -113,7 +113,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="border p-4 rounded-md hover:shadow-lg"
+              className="border p-4 rounded-md hover:shadow-2xl"
             >
               <img
                 src={testimonial.image}

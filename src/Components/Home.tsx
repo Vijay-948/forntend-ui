@@ -6,6 +6,7 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { useEffect, useState } from "react";
 import About from "./About";
 import { useNavigate } from "react-router-dom";
+import { Tilt } from "react-tilt";
 
 const slides = [
   {
@@ -89,11 +90,13 @@ const Home = () => {
 
           <div className="w-1/4 relative">
             <div className="w-full h-full flex items-center justify-center">
-              <img
-                src={slides[currIndx].imgUrl}
-                alt={slides[currIndx].name}
-                className="w-96 h-120 object-cover rounded-2xl"
-              />
+              <Tilt>
+                <img
+                  src={slides[currIndx].imgUrl}
+                  alt={slides[currIndx].name}
+                  className="w-96 h-120 object-cover rounded-2xl"
+                />
+              </Tilt>
             </div>
           </div>
           <ArrowForwardIosIcon
