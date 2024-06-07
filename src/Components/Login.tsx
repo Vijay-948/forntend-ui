@@ -43,12 +43,12 @@ const Login = () => {
       .then((jwtTokenData) => {
         console.log(jwtTokenData);
         console.log("success log");
-        toast.success(
-          `${globalobject.userObject.firstName} ${globalobject.userObject.lastName} Login Sucessfully`
-        );
         localStorage.setItem("token", jwtTokenData.data.token);
         localStorage.setItem("user", userLoginDetails.email);
         setRedirectToNextPage(true);
+        toast.success(
+          `${globalobject.userObject.firstName} ${globalobject.userObject.lastName} Login Sucessfully`
+        );
         setLoader(false);
       })
       .catch((error) => {

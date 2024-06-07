@@ -72,7 +72,6 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
       <div className="max-w-[1500px] h-auto w-full m-auto py-16 px-4 relative flex flex-col justify-around items-center mt-40 rounded-md gap-15">
         <div className="flex w-full justify-between items-center">
           <ArrowBackIosNewIcon

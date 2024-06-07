@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 // import '../Styles/Navbar.css';
 import { Link, useNavigate } from "react-router-dom";
 // import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -7,17 +7,16 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Tooltip } from "@mui/material";
 import { AccountCircleRounded } from "@mui/icons-material";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { getUserInfo } from "../Service/user";
+// import { getUserInfo } from "../Service/user";
 import globalobject from "../Common/global-variable";
+import { getFormattedNameAndInitials } from "../Common/CommonUtil";
 // import { Link } from "react-router-dom";
 // import { username } from "../Service/user";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [profileMenu, setProfileMenu] = useState(false);
-  // const [username, setUsername] = useState(null);
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
@@ -33,26 +32,8 @@ const Navbar = () => {
     navigate("/login");
   };
 
-  // useEffect(() => {
-  //   const fetchUserData = async () => {
-  //     try {
-  //       const repsonse = await username.get("api/v1/auth/user");
-  //       setUsername(repsonse.data);
-  //     } catch (error) {
-  //       console.error("Failed to fetch user data", error);
-  //     }
-  //   };
-
-  //   fetchUserData();
-  // }, []);
-
-  useEffect(() => {
-    getUserInfo(token)
-      .then((response) => {
-        globalobject.userObject = response.data;
-      })
-      .catch(() => {});
-  }, []);
+  const userObject = globalobject.userObject;
+  const { firstName, lastName } = getFormattedNameAndInitials(userObject);
 
   return (
     <>
@@ -114,8 +95,7 @@ const Navbar = () => {
           <div className="relative flex">
             <div className="text-white">
               <p>
-                {globalobject.userObject.firstName}{" "}
-                {globalobject.userObject.lastName}
+                {firstName} {lastName}
               </p>
               <p>{globalobject.userObject.email}</p>
             </div>
@@ -125,7 +105,7 @@ const Navbar = () => {
               </button>
             </Tooltip>
             {profileMenu && (
-              <div className="absolute right-0 mt-12 py-2 w-18 bg-white rounded-md shadow-xl z-20">
+              <div className="absolute right-0 mt-12 py-2 w-32  bg-white rounded-md shadow-xl z-20">
                 <button
                   onClick={handleLogout}
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-600 hover:text-white w-full text-left"
