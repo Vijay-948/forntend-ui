@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import Register from "./Register";
 import { Link, useNavigate } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
+import globalobject from "../Common/global-variable";
 
 const Login = () => {
   const [redirectToNextPage, setRedirectToNextPage] = useState(false);
@@ -42,7 +43,9 @@ const Login = () => {
       .then((jwtTokenData) => {
         console.log(jwtTokenData);
         console.log("success log");
-        toast.success(`${userLoginDetails.email} login sucessfully`);
+        toast.success(
+          `${globalobject.userObject.firstName} ${globalobject.userObject.lastName} Login Sucessfully`
+        );
         localStorage.setItem("token", jwtTokenData.data.token);
         localStorage.setItem("user", userLoginDetails.email);
         setRedirectToNextPage(true);
@@ -50,6 +53,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setLoader(false);
         console.log("error log");
         toast.error(error.response.data);
       });

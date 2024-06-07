@@ -4,6 +4,7 @@ import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 // import { RotatingLines } from "react-loader-spinner";
 import { ToastContainer } from "react-toastify";
+import Navbar from "./Components/Navbar";
 
 const getLoginUrl = () => {
   return `/signup?form=${window.location.pathname + window.location.search}`;
@@ -26,6 +27,7 @@ function App() {
       <ToastContainer />
       {token ? (
         <div id="detail">
+          <Navbar />
           <Outlet />
         </div>
       ) : (

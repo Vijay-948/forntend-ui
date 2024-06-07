@@ -16,3 +16,7 @@ export async function sendOTP(req: any) {
 export async function verifyOtp(req: any) {
   return axiosClient.post("/api/v1/auth/verify", req);
 }
+
+export async function getUserInfo(token: any) {
+  return axiosClient.get("/api/v1/auth/user", { params: { token } });
+}
