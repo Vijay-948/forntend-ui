@@ -1,10 +1,10 @@
 import { FaRegUserCircle, FaLock } from "react-icons/fa";
-import "../Styles/Register.css";
 import { ChangeEvent, useState } from "react";
 import { SignUp } from "../Service/user";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
+import img from "../Assests/Login/wood.avif";
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
@@ -32,46 +32,6 @@ const Register = () => {
     setErrors({ ...errors, [property]: "" });
   };
 
-  // const handleBackendErrors = (backendErrors: { [key: string]: string }) => {
-  //   const newErrors = { ...errors };
-  //   Object.keys(backendErrors).forEach((key) => {
-  //     if (key in newErrors) {
-  //       newErrors[key] = backendErrors[key];
-  //     }
-  //   });
-  //   setErrors(newErrors);
-  // };
-
-  // const validateForm = () => {
-  //   let formValid = true;
-  //   let newErrors = { ...errors };
-
-  //   if (data.firstName.trim() === "") {
-  //     newErrors.firstName = "First name is required";
-  //     formValid = false;
-  //   }
-
-  //   if (data.lastName.trim() === "") {
-  //     newErrors.lastName = "Last name is required";
-  //     formValid = false;
-  //   }
-
-  //   if (!data.email.trim()) {
-  //     newErrors.email = "Email is required";
-  //     formValid = false;
-  //   } else if (!/\S+@\S+\.\S+/.test(data.email)) {
-  //     newErrors.email = "Invalid email format";
-  //     formValid = false;
-  //   }
-  //   if (!data.password.trim()) {
-  //     newErrors.password = "Password is required";
-  //     formValid = false;
-  //   }
-
-  //   setErrors(newErrors);
-  //   return formValid;
-  //  };
-
   const submitForm = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     localStorage.setItem("email", data.email);
@@ -84,7 +44,7 @@ const Register = () => {
         setLoading(false);
         toast.success("User Registered Successfully");
         setRedirectToNextPage(true);
-        localStorage.setItem('token', response.token);
+        localStorage.setItem("token", response.token);
         setData({
           firstName: "",
           lastName: "",
@@ -114,10 +74,6 @@ const Register = () => {
           toast.error("Invalid Credentials");
         }
       });
-
-    // else {
-    //toast.error("Please fill out the form correctly");
-    //}
   };
 
   if (redirectToNextPage) {
@@ -126,60 +82,77 @@ const Register = () => {
   }
 
   return (
-    <div className="login">
-      <div className="container">
+    <div
+      className="flex justify-center items-center min-h-screen bg-cover bg-center bg-gray-900"
+      // style={{ backgroundImage: `url(${img})` }}
+    >
+      <div className="w-96 bg-transparent border-2 border-white border-opacity-20 backdrop-blur-md shadow-lg text-white rounded-lg p-8 ">
         <form>
-          <h1>Register</h1>
-          <div className="input-box">
+          <h1 className="text-3xl text-center font-bold mb-6">Register</h1>
+          <div className="relative w-full h-12 mb-8">
             <input
               type="text"
               placeholder="First Name"
               onChange={(event) => handleChange(event, "firstName")}
               value={data.firstName}
+              className="w-full h-full bg-gray-800 bg-opacity-75 border-2 border-white border-opacity-20 rounded-full pl-4 pr-10 text-white placeholder-gray-300"
             />
-            <span className="error">{errors.firstName}</span>
+            <span className="text-red-500 text-sm">{errors.firstName}</span>
           </div>
-          <div className="input-box">
+          <div className="relative w-full h-12 mb-8">
             <input
               type="text"
               placeholder="Last Name"
               onChange={(event) => handleChange(event, "lastName")}
               value={data.lastName}
+              className="w-full h-full bg-gray-800 bg-opacity-75 border-2 border-white border-opacity-20 rounded-full pl-4 pr-10 text-white placeholder-gray-300"
             />
-            <span className="error">{errors.lastName}</span>
+            <span className="text-red-500 text-sm">{errors.lastName}</span>
           </div>
-          <div className="input-box">
+          <div className="relative w-full h-12 mb-8">
             <input
               type="email"
               placeholder="Email"
               onChange={(event) => handleChange(event, "email")}
               value={data.email}
+              className="w-full h-full bg-gray-800 bg-opacity-75 border-2 border-white border-opacity-20 rounded-full pl-4 pr-10 text-white placeholder-gray-300"
             />
-            <FaRegUserCircle className="icon" />
-            <span className="error">{errors.email}</span>
+            <FaRegUserCircle className="absolute right-4 top-3.5" />
+            <span className="text-red-500 text-sm">{errors.email}</span>
           </div>
-          <div className="input-box">
+          <div className="relative w-full h-12 mb-8">
             <input
               type="password"
               placeholder="Password"
               onChange={(event) => handleChange(event, "password")}
               value={data.password}
+              className="w-full h-full bg-gray-800 bg-opacity-75 border-2 border-white border-opacity-20 rounded-full pl-4 pr-10 text-white placeholder-gray-300"
             />
-            <FaLock className="icon" />
-            <span className="error">{errors.password}</span>
+            <FaLock className="absolute right-4 top-3.5" />
+            <span className="text-red-500 text-sm">{errors.password}</span>
           </div>
-          <button type="submit" onClick={submitForm}>
+          <button
+            type="submit"
+            onClick={submitForm}
+            className="w-1/2 h-12 flex justify-center items-center mx-auto bg-white text-gray-800 font-bold rounded-full hover:bg-blue-600 hover:text-white transition-colors duration-200"
+          >
             Register
           </button>
-          <div className="register-link">
-            <p>
-              Already have an account? <Link to="/login">Login</Link>
+          <div className="text-center mt-6">
+            <p className="text-lg">
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                className="text-white font-semibold hover:text-red-500"
+              >
+                Login
+              </Link>
             </p>
           </div>
         </form>
       </div>
       {loading && (
-        <div className="fixed inset-0 bg-white-700 bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-gray-700 bg-opacity-50 flex items-center justify-center z-50">
           <RotatingLines
             strokeColor="gray"
             strokeWidth="6"

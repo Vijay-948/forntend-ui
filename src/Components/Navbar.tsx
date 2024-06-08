@@ -97,7 +97,9 @@ const Navbar = () => {
               <p>
                 {firstName} {lastName}
               </p>
-              <p>{globalobject.userObject.email}</p>
+              <p className="text-xs hover:text-red-200">
+                {globalobject.userObject.email}
+              </p>
             </div>
             <Tooltip title="Logout">
               <button onClick={toggleProfileMenu} className="text-white">
@@ -105,10 +107,10 @@ const Navbar = () => {
               </button>
             </Tooltip>
             {profileMenu && (
-              <div className="absolute right-0 mt-12 py-2 w-32  bg-white rounded-md shadow-xl z-20">
+              <div className="absolute right-0 mt-12 py-2 w-32 bg-white rounded-md shadow-xl z-20">
                 <button
                   onClick={handleLogout}
-                  className="block px-4 py-2 text-gray-800 hover:bg-gray-600 hover:text-white w-full text-left"
+                  className="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                 >
                   <LogoutIcon /> Logout
                 </button>
