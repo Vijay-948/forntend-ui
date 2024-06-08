@@ -16,6 +16,8 @@ import Faq from "./Components/Faq";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
 import EmailVerificationCode from "./Authentication/EmailVerificationCode";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
@@ -73,7 +75,12 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
-root.render(<RouterProvider router={router} />);
+root.render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+    <ToastContainer />
+  </React.StrictMode>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

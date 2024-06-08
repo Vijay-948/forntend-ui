@@ -1,45 +1,36 @@
 import { FaRegUserCircle, FaLock } from "react-icons/fa";
 import { login } from "../Service/user";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+
+// Validation schema for form validation using Yup
 
 const Login = () => {
   const [redirectToNextPage, setRedirectToNextPage] = useState(false);
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
-  const [userLoginDetails, setUserLoginDetails] = useState({
-    email: "",
-    password: "",
+
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email("Invalid email format")
+      .required("Email is required"),
+    password: Yup.string().required("Password is required"),
   });
 
-  const handleChange = (
-    event: ChangeEvent<HTMLInputElement>,
-    fields: string
-  ) => {
-    setUserLoginDetails({ ...userLoginDetails, [fields]: event.target.value });
-  };
-
-  const submitForm = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
+  const handleSubmit = (values: { email: string; password: string }) => {
     setLoader(true);
 
-    if (
-      userLoginDetails.email.trim() === "" ||
-      userLoginDetails.password.trim() === ""
-    ) {
-      toast.error("Please Enter Details Correctly !");
-      setLoader(false);
-      return;
-    }
-
-    login(userLoginDetails)
+    login(values)
       .then((jwtTokenData) => {
         localStorage.setItem("token", jwtTokenData.data.token);
-        localStorage.setItem("user", userLoginDetails.email);
+        localStorage.setItem("user", values.email);
         setRedirectToNextPage(true);
         setLoader(false);
+        toast.success("Logged in successfully!");
       })
       .catch((error) => {
         setLoader(false);
@@ -53,65 +44,70 @@ const Login = () => {
 
   return (
     <div className="relative flex justify-center items-center min-h-screen overflow-hidden bg-gray-900">
-      {/* <video
-        autoPlay
-        loop
-        muted
-        className="absolute w-auto min-w-full min-h-full max-w-none"
-      >
-        <source src="../Assets/Login/background.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video> */}
-      <div className="relative w-[420px]  bg-opacity-75 border-2 border-white border-opacity-20 backdrop-blur-3xl shadow-lg text-white rounded-lg p-10 z-10">
-        <form onSubmit={submitForm}>
-          <h1 className="text-4xl text-center font-semibold mb-8">Login</h1>
-          <div className="relative w-full h-12 mb-8">
-            <input
-              type="email"
-              placeholder="Username"
-              value={userLoginDetails.email}
-              onChange={(e) => handleChange(e, "email")}
-              required
-              className="w-full h-full bg-gray-800 bg-opacity-75 border-2 border-white border-opacity-20 rounded-full pl-4 pr-10 text-white placeholder-gray-300"
-            />
-            <FaRegUserCircle className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white" />
-          </div>
-          <div className="relative w-full h-12 mb-8">
-            <input
-              type="password"
-              placeholder="Password"
-              value={userLoginDetails.password}
-              onChange={(e) => handleChange(e, "password")}
-              required
-              className="w-full h-full bg-gray-800 bg-opacity-75 border-2 border-white border-opacity-20 rounded-full pl-4 pr-10 text-white placeholder-gray-300"
-            />
-            <FaLock className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white" />
-          </div>
-          <div className="flex justify-between text-sm mb-8">
-            <label>
-              <Link to="/resetPassword" className="text-white no-underline">
-                Forgot Password?
-              </Link>
-            </label>
-          </div>
-          <button
-            type="submit"
-            className="w-1/2 h-12 bg-white text-gray-800 rounded-full mx-auto block text-lg font-semibold hover:bg-blue-600 hover:text-white"
-          >
-            Login
-          </button>
-          <div className="text-center mt-12 text-lg">
-            <p>
-              Don't have an account?{" "}
-              <Link
-                to="/signup"
-                className="text-white font-semibold no-underline hover:text-red-600"
+      <div className="relative w-[420px] bg-opacity-75 border-2 border-white border-opacity-20 backdrop-blur-3xl shadow-lg text-white rounded-lg p-10 z-10">
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          {() => (
+            <Form>
+              <h1 className="text-4xl text-center font-semibold mb-8">Login</h1>
+              <div className="relative w-full h-12 mb-8">
+                <Field
+                  type="email"
+                  name="email"
+                  placeholder="Username"
+                  className="w-full h-full bg-gray-800 bg-opacity-75 border-2 border-white border-opacity-20 rounded-full pl-4 pr-10 text-white placeholder-gray-300"
+                />
+                <FaRegUserCircle className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white" />
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className="text-red-500 text-sm mt-1"
+                />
+              </div>
+              <div className="relative w-full h-12 mb-8">
+                <Field
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  className="w-full h-full bg-gray-800 bg-opacity-75 border-2 border-white border-opacity-20 rounded-full pl-4 pr-10 text-white placeholder-gray-300"
+                />
+                <FaLock className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white" />
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className="text-red-500 text-sm mt-1"
+                />
+              </div>
+              <div className="flex justify-between text-sm mb-8">
+                <label>
+                  <Link to="/resetPassword" className="text-white no-underline">
+                    Forgot Password?
+                  </Link>
+                </label>
+              </div>
+              <button
+                type="submit"
+                className="w-1/2 h-12 bg-white text-gray-800 rounded-full mx-auto block text-lg font-semibold hover:bg-blue-900 hover:text-white"
               >
-                Register
-              </Link>
-            </p>
-          </div>
-        </form>
+                Login
+              </button>
+              <div className="text-center mt-12 text-lg">
+                <p>
+                  Don't have an account?{" "}
+                  <Link
+                    to="/signup"
+                    className="text-white font-semibold no-underline hover:text-red-600"
+                  >
+                    Register
+                  </Link>
+                </p>
+              </div>
+            </Form>
+          )}
+        </Formik>
       </div>
       {loader && (
         <div className="fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center z-50">
