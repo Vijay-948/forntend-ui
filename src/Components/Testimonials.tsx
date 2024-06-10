@@ -1,5 +1,5 @@
-import React from "react";
-import img1 from "../Assests/contact-bg.png";
+// import React from "react";
+// import img1 from "../Assests/contact-bg.png";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
@@ -15,7 +15,7 @@ const testimonials = [
     id: 1,
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg",
-    name: "aaaa",
+    name: "chandana",
     quote:
       "Just received my new AirPods, and they are amazing! The sound quality is exceptional, and they fit perfectly. Totally worth it!",
     rating: 5,
@@ -42,7 +42,7 @@ const testimonials = [
     id: 4,
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
-    name: "aaaa",
+    name: "Anjali",
     quote:
       "Purchased a smartwatch and I'm loving it! The features are amazing, and it helps me stay organized throughout the day.",
     rating: 5,
@@ -50,8 +50,8 @@ const testimonials = [
   {
     id: 5,
     image:
-      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
-    name: "aaaa",
+      "https://winningfaces.com.au/wp-content/gallery/headshots2018/headshot-08.jpg",
+    name: "kavya",
     quote:
       "Ordered a new laptop, and it exceeded my expectations! The performance is blazing fast, and the display is stunning.",
     rating: 4,
@@ -59,8 +59,8 @@ const testimonials = [
   {
     id: 6,
     image:
-      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
-    name: "aaaa",
+      "https://img.freepik.com/free-photo/studio-portrait-serious-bearded-male-dressed-suit_613910-5596.jpg?size=626&ext=jpg&ga=GA1.1.2027754288.1718008773&semt=ais_user ",
+    name: "Gajanand",
     quote:
       "Bought a gaming console and it's awesome! The graphics are incredible, and the gaming experience is immersive.",
     rating: 3,
@@ -77,8 +77,8 @@ const testimonials = [
   {
     id: 8,
     image:
-      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
-    name: "aaaa",
+      "	https://img.freepik.com/free-photo/front-view-youn…ffice-clothing_23-2148763859.jpg?size=626&ext=jpg",
+    name: "karan",
     quote:
       "Ordered a new tablet and it's fantastic! The screen is crisp, and it's perfect for both work and entertainment.",
     rating: 4,
@@ -86,8 +86,8 @@ const testimonials = [
   {
     id: 9,
     image:
-      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
-    name: "aaaa",
+      "	https://img.freepik.com/free-photo/front-view-business-man_23-2148479524.jpg?size=626&ext=jpg",
+    name: "Saif Alam",
     quote:
       "Purchased a fitness tracker and it's helping me stay on top of my health goals! The features are motivating and easy to use.",
     rating: 5,
@@ -95,7 +95,7 @@ const testimonials = [
   {
     id: 10,
     image:
-      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
+      "https://img.freepik.com/premium-photo/young-smilli…color-background_947762-4609.jpg?size=626&ext=jpg",
     name: "aaaa",
     quote:
       "Got a new portable charger and it's a lifesaver! It keeps my devices charged on the go, and it's so convenient to carry.",
@@ -106,7 +106,6 @@ const testimonials = [
 const Testimonials = () => {
   return (
     <>
-      <Navbar />
       <div className="mt-40 text-center">
         <h1 className="text-2xl font-semibold mb-4 text-black">Testimonials</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
