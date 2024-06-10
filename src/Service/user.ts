@@ -5,7 +5,7 @@ export async function SignUp(user: UserDetails) {
   return axiosClient.post("/api/v1/auth/register", user);
 }
 
-export const login = (user: userLoginDetails) => {
+export async function login(user: userLoginDetails)  {
   return axiosClient.post("/api/v1/auth/login", user);
 };
 

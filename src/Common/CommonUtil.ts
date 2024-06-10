@@ -14,7 +14,6 @@ export function getFormattedNameAndInitials(userObj: any) {
     }
 
     if (userObj.lastName) {
-        
         userObj.lastName = userObj.lastName.charAt(0).toUpperCase() + userObj.lastName.slice(1).toLowerCase();
         initials += userObj.lastName[0];
     }

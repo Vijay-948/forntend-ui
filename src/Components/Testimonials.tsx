@@ -15,7 +15,7 @@ const testimonials = [
     id: 1,
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg",
-    name: "Tapsi",
+    name: "aaaa",
     quote:
       "Just received my new AirPods, and they are amazing! The sound quality is exceptional, and they fit perfectly. Totally worth it!",
     rating: 5,
@@ -42,7 +42,7 @@ const testimonials = [
     id: 4,
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
-    name: "Rashmika",
+    name: "aaaa",
     quote:
       "Purchased a smartwatch and I'm loving it! The features are amazing, and it helps me stay organized throughout the day.",
     rating: 5,
@@ -51,7 +51,7 @@ const testimonials = [
     id: 5,
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
-    name: "Rashmika",
+    name: "aaaa",
     quote:
       "Ordered a new laptop, and it exceeded my expectations! The performance is blazing fast, and the display is stunning.",
     rating: 4,
@@ -60,7 +60,7 @@ const testimonials = [
     id: 6,
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
-    name: "Rashmika",
+    name: "aaaa",
     quote:
       "Bought a gaming console and it's awesome! The graphics are incredible, and the gaming experience is immersive.",
     rating: 3,
@@ -69,7 +69,7 @@ const testimonials = [
     id: 7,
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
-    name: "Rashmika",
+    name: "aaaa",
     quote:
       "Got myself a new camera, and I'm amazed by the picture quality! Capturing memories has never been this clear and vibrant.",
     rating: 4,
@@ -78,7 +78,7 @@ const testimonials = [
     id: 8,
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
-    name: "Rashmika",
+    name: "aaaa",
     quote:
       "Ordered a new tablet and it's fantastic! The screen is crisp, and it's perfect for both work and entertainment.",
     rating: 4,
@@ -87,7 +87,7 @@ const testimonials = [
     id: 9,
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
-    name: "Rashmika",
+    name: "aaaa",
     quote:
       "Purchased a fitness tracker and it's helping me stay on top of my health goals! The features are motivating and easy to use.",
     rating: 5,
@@ -96,7 +96,7 @@ const testimonials = [
     id: 10,
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
-    name: "Rashmika",
+    name: "aaaa",
     quote:
       "Got a new portable charger and it's a lifesaver! It keeps my devices charged on the go, and it's so convenient to carry.",
     rating: 4,
