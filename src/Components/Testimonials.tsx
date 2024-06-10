@@ -1,7 +1,7 @@
 // import React from "react";
 // import img1 from "../Assests/contact-bg.png";
 import Footer from "./Footer";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 
 // interface Ratings {
 //   id: number;
@@ -69,7 +69,7 @@ const testimonials = [
     id: 7,
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
-    name: "aaaa",
+    name: "Anjali",
     quote:
       "Got myself a new camera, and I'm amazed by the picture quality! Capturing memories has never been this clear and vibrant.",
     rating: 4,
@@ -96,7 +96,7 @@ const testimonials = [
     id: 10,
     image:
       "https://img.freepik.com/premium-photo/young-smilli…color-background_947762-4609.jpg?size=626&ext=jpg",
-    name: "aaaa",
+    name: "sravya",
     quote:
       "Got a new portable charger and it's a lifesaver! It keeps my devices charged on the go, and it's so convenient to carry.",
     rating: 4,
@@ -134,7 +134,6 @@ const Testimonials = () => {
                   </span>
                 ))}
               </div>
-
               <p className="text-center font-semibold text-black">
                 {testimonial.name}
               </p>

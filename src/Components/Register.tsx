@@ -37,16 +37,16 @@ const Register = () => {
     setLoading(true);
     SignUp(values)
       .then((response: any) => {
-        console.log(response);
-        console.log("success log");
+        // console.log(response);
+        // console.log("success log");
         setLoading(false);
         toast.success("User Registered Successfully");
         setRedirectToNextPage(true);
         localStorage.setItem("token", response.token);
       })
       .catch((error: any) => {
-        console.log(error);
-        console.log("error log");
+        // console.log(error);
+        // console.log("error log");
 
         if (error.response.status === 400) {
           if (error.response.data === "Email is Already exists") {
