@@ -40,7 +40,7 @@ function App() {
         console.error("user not found");
         setLoading(false);
       });
-  }, []);
+  }, [token]);
 
   return (
     <>
