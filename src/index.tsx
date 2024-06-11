@@ -18,6 +18,9 @@ import Footer from "./Components/Footer";
 import EmailVerificationCode from "./Authentication/EmailVerificationCode";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ResetPassword from "./Components/ResetPassword";
+import OTPVerify from "./Authentication/OTPVerify";
+import UpdatePassword from "./Authentication/updatePassword";
 
 const router = createBrowserRouter([
   {
@@ -29,8 +32,20 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "pin",
+    path: "/pin",
     element: <EmailVerificationCode />,
+  },
+  {
+    path: "/sent",
+    element: <ResetPassword />,
+  },
+  {
+    path: "/otpverify",
+    element: <OTPVerify />,
+  },
+  {
+    path: "resetpassword",
+    element: <UpdatePassword />,
   },
   {
     path: "/",
