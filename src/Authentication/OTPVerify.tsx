@@ -1,23 +1,23 @@
 // import { ClassNames } from "@emotion/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import OtpInput from "react-otp-input";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { sendOTP, verifyOtp } from "../Service/user";
 
-const EmailVerificationCode = () => {
+const OTPVerify = () => {
   const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [errMsg, setErrMsg] = useState("");
-  // const [redirectToNextPage, setRedirectToNextPage] = useState(false);
+  const [redirectToNextPage, setRedirectToNextPage] = useState(false);
 
-  useEffect(() => {
-    const localEmail = localStorage.getItem("email");
-    if (!localEmail) {
-      window.location.href = "/signup";
-    }
-  });
+  // useEffect(() => {
+  //   const localEmail = localStorage.getItem("email");
+  //   if (!localEmail) {
+  //     window.location.href = "/signup";
+  //   }
+  // });
 
   const verifyOtpAuth = () => {
     setLoading(true);
@@ -29,7 +29,7 @@ const EmailVerificationCode = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data) {
-          navigate("/login");
+          navigate("/resetpassword");
         }
         setLoading(false);
       })
@@ -129,4 +129,4 @@ const EmailVerificationCode = () => {
   );
 };
 
-export default EmailVerificationCode;
+export default OTPVerify;
