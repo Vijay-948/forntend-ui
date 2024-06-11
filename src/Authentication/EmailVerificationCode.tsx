@@ -94,12 +94,12 @@ const EmailVerificationCode = () => {
 
       <p className="text-center text-sm mt-10">
         Didn't get a code? {"     "}
-        <a
+        <button
           onClick={handleResendOTP}
           style={{ color: "red", marginLeft: "8px", cursor: "pointer" }}
         >
           Resend OTP
-        </a>
+        </button>
       </p>
 
       {errMsg && (
