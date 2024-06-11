@@ -1,5 +1,5 @@
 // import React, { useEffect, useState } from "react";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 // import { RotatingLines } from "react-loader-spinner";
@@ -8,7 +8,7 @@ import Navbar from "./Components/Navbar";
 import { getUserInfo } from "./Service/user";
 import { useEffect, useState } from "react";
 import globalobject from "./Common/global-variable";
-import { Box } from "@mui/material";
+// import { Box } from "@mui/material";
 import { RotatingLines } from "react-loader-spinner";
 
 const getLoginUrl = () => {

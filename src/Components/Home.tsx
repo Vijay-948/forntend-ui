@@ -1,5 +1,5 @@
-import { Widgets } from "@mui/icons-material";
-import Navbar from "./Navbar";
+// import { Widgets } from "@mui/icons-material";
+// import Navbar from "./Navbar";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";

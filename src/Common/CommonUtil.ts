@@ -1,4 +1,4 @@
-import globalobject from "./global-variable";
+// import globalobject from "./global-variable";
 
 
 export function redirectToLogin() {

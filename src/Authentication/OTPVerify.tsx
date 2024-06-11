@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import OtpInput from "react-otp-input";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { sendOTP, verifyOtp } from "../Service/user";
 
 const OTPVerify = () => {
@@ -10,7 +10,7 @@ const OTPVerify = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [errMsg, setErrMsg] = useState("");
-  const [redirectToNextPage, setRedirectToNextPage] = useState(false);
+  // const [redirectToNextPage, setRedirectToNextPage] = useState(false);
 
   // useEffect(() => {
   //   const localEmail = localStorage.getItem("email");
@@ -93,7 +93,7 @@ const OTPVerify = () => {
       </div>
 
       <p className="text-center text-sm mt-10">
-        Didn't get a code? {"     "}
+        Didn't get a code? {"   "}
         <a
           onClick={handleResendOTP}
           style={{ color: "red", marginLeft: "8px", cursor: "pointer" }}
