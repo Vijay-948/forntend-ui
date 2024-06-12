@@ -34,6 +34,12 @@ const Login = () => {
       })
       .catch((error) => {
         setLoader(false);
+        if (error.response && error.response.status === 401) {
+          setFieldError("email", "Invalid username or password");
+          setFieldError("password", "Invalid username or password");
+        } else {
+          toast.error("Something went wrong. Please try again later!");
+        }
         toast.error(error.response.data);
       });
   };
@@ -124,3 +130,6 @@ const Login = () => {
 };
 
 export default Login;
+function setFieldError(arg0: string, arg1: string) {
+  throw new Error("Function not implemented.");
+}
