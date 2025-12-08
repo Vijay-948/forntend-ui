@@ -48,38 +48,38 @@ const router = createBrowserRouter([
     element: <UpdatePassword />,
   },
   {
+    path: "/navbar",
+    element: <Navbar />,
+  },
+  {
+    path: "/home",
+    element: <Home />,
+  },
+  {
+    path: "/aboutUs",
+    element: <About />,
+  },
+  {
+    path: "/productList",
+    element: <ProductList />,
+  },
+  {
+    path: "/testimonials",
+    element: <Testimonials />,
+  },
+  {
+    path: "/faq",
+    element: <Faq />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
+  },
+  {
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        path: "/navbar",
-        element: <Navbar />,
-      },
-      {
-        path: "/home",
-        element: <Home />,
-      },
-      {
-        path: "/aboutUs",
-        element: <About />,
-      },
-      {
-        path: "/productList",
-        element: <ProductList />,
-      },
-      {
-        path: "/testimonials",
-        element: <Testimonials />,
-      },
-      {
-        path: "/faq",
-        element: <Faq />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
       {
         path: "/footer",
         element: <Footer />,

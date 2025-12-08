@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.slider-track {
+  animation: scroll-x 40s linear infinite;
+}

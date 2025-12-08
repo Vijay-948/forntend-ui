@@ -29,44 +29,40 @@ function App() {
   //   }
   // })
 
-  useEffect(() => {
-    getUserInfo(token)
-      .then((response) => {
-        globalobject.userObject = response.data;
-        setLoading(false);
-        // setUserData(response.data);
-      })
-      .catch(() => {
-        console.error("user not found");
-        setLoading(false);
-      });
-  }, [token]);
+  // useEffect(() => {
+  //   getUserInfo(token)
+  //     .then((response) => {
+  //       globalobject.userObject = response.data;
+  //       setLoading(false);
+  //       // setUserData(response.data);
+  //     })
+  //     .catch(() => {
+  //       console.error("user not found");
+  //       setLoading(false);
+  //     });
+  // }, [token]);
 
   return (
     <>
       <ToastContainer />
-      {token ? (
-        <div id="detail">
-          {!loading && globalobject.userObject && (
-            <div>
-              <Navbar />
-              <Outlet />
-            </div>
-          )}
-          {loading && (
-            <div className="fixed inset-0 bg-white-700 bg-opacity-50 flex items-center justify-center z-50">
-              <RotatingLines
-                strokeColor="gray"
-                strokeWidth="6"
-                animationDuration="0.67"
-                width="96"
-              />
-            </div>
-          )}
-        </div>
-      ) : (
-        <Navigate to={getLoginUrl()} />
-      )}
+      <div id="detail">
+        {!loading && !globalobject.userObject && (
+          <div>
+            <Navbar />
+            <Outlet />
+          </div>
+        )}
+        {loading && (
+          <div className="fixed inset-0 bg-white-700 bg-opacity-50 flex items-center justify-center z-50">
+            <RotatingLines
+              strokeColor="gray"
+              strokeWidth="6"
+              animationDuration="0.67"
+              width="96"
+            />
+          </div>
+        )}
+      </div>
     </>
   );
 }

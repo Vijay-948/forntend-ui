@@ -7,6 +7,9 @@ import { useEffect, useState } from "react";
 import About from "./About";
 import { useNavigate } from "react-router-dom";
 import { Tilt } from "react-tilt";
+// import Testimonials from "./Testimonials";
+// import { testimonials } from "./Testimonials";
+import "../App.css";
 
 const slides = [
   {
@@ -43,9 +46,63 @@ const slides = [
   },
 ];
 
+const testimonials = [
+  {
+    id: 1,
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959131/person-2_ipcjws.jpg",
+    name: "chandana",
+    quote:
+      "Just received my new AirPods, and they are amazing! The sound quality is exceptional, and they fit perfectly. Totally worth it!",
+    rating: 5,
+  },
+  {
+    id: 2,
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883417/person-3_ipa0mj.jpg",
+    name: "Vijay Reddy",
+    quote:
+      "Bought a new Bluetooth speaker, and I'm impressed! The sound is crystal clear, and the design is sleek. Loving it!",
+    rating: 4,
+  },
+  {
+    id: 3,
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1595959121/person-1_aufeoq.jpg",
+    name: "Keshav",
+    quote:
+      "Got my new headphones today, and they're fantastic! The noise cancellation is top-notch, and they're so comfortable to wear.",
+    rating: 5,
+  },
+  {
+    id: 4,
+    image:
+      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
+    name: "Anjali",
+    quote:
+      "Purchased a smartwatch and I'm loving it! The features are amazing, and it helps me stay organized throughout the day.",
+    rating: 5,
+  },
+  {
+    id: 5,
+    image:
+      "https://winningfaces.com.au/wp-content/gallery/headshots2018/headshot-08.jpg",
+    name: "kavya",
+    quote:
+      "Ordered a new laptop, and it exceeded my expectations! The performance is blazing fast, and the display is stunning.",
+    rating: 4,
+  },
+];
+
 const Home = () => {
   const [currIndx, setCurrIndx] = useState(0);
+  // const navigate = useNavigate();
+  // const testimonialSlides = testimonials.slice(0, 7);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
   const navigate = useNavigate();
+  const handleViewMore = () => {
+    navigate("/testimonials"); // replace with your actual route
+  };
 
   const prevSlide = () => {
     const isFirstSlide = currIndx === 0;
@@ -59,20 +116,38 @@ const Home = () => {
     setCurrIndx(newIndex);
   };
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 3000);
+
+    return () => clearInterval(timer);
+  }, [currIndx]);
+
   const goToSlide = (slideIndex: any) => {
     setCurrIndx(slideIndex - 1);
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    }
-  }, [navigate]);
+    const timer = setInterval(() => {
+      setTestimonialIndex((testimonialIndex) =>
+        testimonialIndex === testimonials.length - 1 ? 0 : testimonialIndex + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   }
+  // }, [navigate]);
 
   return (
     <>
-      <div className="max-w-[1500px] h-auto w-full m-auto py-16 px-4 relative flex flex-col justify-around items-center mt-40 rounded-md gap-15">
+      <div className="max-w-[1500px] h-auto w-full m-auto py-10 px-4 relative flex flex-col justify-around items-center mt-40 rounded-md gap-15">
         <div className="flex w-full justify-between items-center">
           <ArrowBackIosNewIcon
             onClick={prevSlide}
@@ -117,6 +192,51 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <div className="w-full overflow-hidden mt-20">
+        <div className="flex slider-track w-[200%]">
+          {[...testimonials, ...testimonials].map((item, index) => (
+            <div
+              key={index}
+              className="border p-6 bg-white rounded-xl shadow-lg w-[300px] mx-4 flex-shrink-0"
+            >
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-20 h-20 rounded-full mx-auto mb-3 object-cover"
+              />
+
+              <p className="text-gray-700 mb-3 text-center">"{item.quote}"</p>
+
+              <div className="mb-3 text-center">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span
+                    key={i}
+                    className={
+                      i < item.rating ? "text-yellow-500" : "text-gray-300"
+                    }
+                  >
+                    ★
+                  </span>
+                ))}
+              </div>
+
+              <p className="font-semibold text-black text-center">
+                {item.name}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="w-full flex flex-col items-center mt-8">
+          <button
+            onClick={handleViewMore}
+            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
+          >
+            View More
+          </button>
+        </div>
+      </div>
+
       <About />
     </>
   );
