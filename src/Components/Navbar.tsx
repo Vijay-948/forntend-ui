@@ -1,6 +1,6 @@
 import { useState } from "react";
 // import '../Styles/Navbar.css';
-import { Link, To, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -12,7 +12,7 @@ import globalobject from "../Common/global-variable";
 import { getFormattedNameAndInitials } from "../Common/CommonUtil";
 // import { Link } from "react-router-dom";
 // import { username } from "../Service/user";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = () => {

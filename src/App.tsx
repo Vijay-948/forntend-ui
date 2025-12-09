@@ -1,23 +1,23 @@
 // import React, { useEffect, useState } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 // import { RotatingLines } from "react-loader-spinner";
 import { ToastContainer } from "react-toastify";
 import Navbar from "./Components/Navbar";
-import { getUserInfo } from "./Service/user";
+// import { getUserInfo } from "./Service/user";
 import { useEffect, useState } from "react";
 import globalobject from "./Common/global-variable";
 // import { Box } from "@mui/material";
 import { RotatingLines } from "react-loader-spinner";
 
-const getLoginUrl = () => {
-  return `/signup?form=${window.location.pathname + window.location.search}`;
-};
+// const getLoginUrl = () => {
+//   return `/signup?form=${window.location.pathname + window.location.search}`;
+// };
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
 
   // const navigate = useNavigate();
 

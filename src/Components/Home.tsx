@@ -10,6 +10,7 @@ import { Tilt } from "react-tilt";
 // import Testimonials from "./Testimonials";
 // import { testimonials } from "./Testimonials";
 import "../App.css";
+import { toast } from "react-toastify";
 
 const slides = [
   {
@@ -96,13 +97,25 @@ const testimonials = [
 
 const Home = () => {
   const [currIndx, setCurrIndx] = useState(0);
-  // const navigate = useNavigate();
-  // const testimonialSlides = testimonials.slice(0, 7);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const navigate = useNavigate();
-  const handleViewMore = () => {
-    navigate("/testimonials"); // replace with your actual route
+  const handleProtectedClick = (path: any) => {
+    if (!token) {
+      toast.warning("Please Sign In or Sign Up to view details!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+      return;
+    }
+    navigate(path);
   };
+
+  // const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
   const prevSlide = () => {
     const isFirstSlide = currIndx === 0;
@@ -192,6 +205,25 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <div className="w-full flex justify-center mt-6">
+        <button
+          className="text-center bg-blue-600 text-white px-6 py-2 rounded-md"
+          onClick={() => handleProtectedClick("/products")}
+        >
+          View More Products
+        </button>
+      </div>
+
+      <div className="text-center mb-10 mt-10">
+        <p className="text-xl font-semibold text-gray-800">
+          Thousands of customers are delighted with their purchases.
+        </p>
+        <p className="text-lg text-gray-600 mt-4">
+          They enjoy premium quality and a seamless shopping experience. Their
+          satisfaction motivates us to serve even better.
+        </p>
+      </div>
+
       <div className="w-full overflow-hidden mt-20">
         <div className="flex slider-track w-[200%]">
           {[...testimonials, ...testimonials].map((item, index) => (
@@ -229,7 +261,7 @@ const Home = () => {
 
         <div className="w-full flex flex-col items-center mt-8">
           <button
-            onClick={handleViewMore}
+            onClick={() => handleProtectedClick("/testmonials")}
             className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
           >
             View More
