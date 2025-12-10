@@ -3,7 +3,7 @@
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import About from "./About";
 import { useNavigate } from "react-router-dom";
 import { Tilt } from "react-tilt";
@@ -98,6 +98,7 @@ const testimonials = [
 const Home = () => {
   const [currIndx, setCurrIndx] = useState(0);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
+  console.log(testimonialIndex);
   const navigate = useNavigate();
   const handleProtectedClick = (path: any) => {
     if (!token) {
@@ -123,19 +124,14 @@ const Home = () => {
     setCurrIndx(newIndex);
   };
 
-  const nextSlide = () => {
-    const isLastSlide = currIndx === slides.length - 1;
-    const newIndex = isLastSlide ? 0 : currIndx + 1;
-    setCurrIndx(newIndex);
-  };
+  const nextSlide = useCallback(() => {
+    setCurrIndx((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+  }, [slides.length]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      nextSlide();
-    }, 3000);
-
+    const timer = setInterval(nextSlide, 3000);
     return () => clearInterval(timer);
-  }, [currIndx]);
+  }, [nextSlide]);
 
   const goToSlide = (slideIndex: any) => {
     setCurrIndx(slideIndex - 1);
