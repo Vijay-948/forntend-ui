@@ -126,7 +126,7 @@ const Home = () => {
 
   const nextSlide = useCallback(() => {
     setCurrIndx((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  }, [slides.length]);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(nextSlide, 3000);
