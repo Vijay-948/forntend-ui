@@ -10,7 +10,7 @@ import * as Yup from "yup";
 // Validation schema for form validation using Yup
 
 const Login = () => {
-  const [redirectToNextPage, setRedirectToNextPage] = useState(false);
+  // const [redirectToNextPage, setRedirectToNextPage] = useState(false);
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
 
@@ -28,9 +28,9 @@ const Login = () => {
       .then((jwtTokenData) => {
         localStorage.setItem("token", jwtTokenData.data.token);
         localStorage.setItem("user", values.email);
-        setRedirectToNextPage(true);
-        setLoader(false);
         toast.success("Logged in successfully!");
+        navigate("/home");
+        setLoader(false);
       })
       .catch((error) => {
         setLoader(false);
@@ -44,9 +44,9 @@ const Login = () => {
       });
   };
 
-  if (redirectToNextPage) {
-    navigate("/home");
-  }
+  // if (redirectToNextPage) {
+  //   navigate("/home");
+  // }
 
   return (
     <div className="relative flex justify-center items-center min-h-screen overflow-hidden bg-gray-900">
