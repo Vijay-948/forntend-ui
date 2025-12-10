@@ -73,7 +73,7 @@ const Navbar = () => {
               <Link
                 // onClick={() => handleProtectedClick("/product_list")}
                 className="text-white font-semibold hover:text-red-500"
-                to="/productList"
+                to="/products"
               >
                 Products
               </Link>
