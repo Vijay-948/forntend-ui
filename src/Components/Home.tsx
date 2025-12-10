@@ -264,7 +264,7 @@ const Home = () => {
           <button
             onClick={() =>
               handleProtectedClick(
-                "/testmonials",
+                "/testimonials",
                 "Please Sign In or Sign Up to view details!"
               )
             }
