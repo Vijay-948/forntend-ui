@@ -3,11 +3,13 @@ import PublicIcon from "@mui/icons-material/Public";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import Footer from "./Footer";
+import { ToastContainer } from "react-toastify";
 
 const About = () => {
   return (
     <>
       <Navbar />
+      <ToastContainer />
       <div className="bg-white-600 py-8 px-4 sm:px-6 lg:px-6 mt-40">
         <div className="max-w-7xl mx-auto">
           <div className="lg:text-center">

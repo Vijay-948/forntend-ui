@@ -3,6 +3,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import { ToastContainer } from "react-toastify";
 
 const FaqList = [
   {
@@ -82,6 +83,7 @@ const Faq = () => {
   return (
     <>
       <Navbar />
+      <ToastContainer />
       <div className="max-w-7xl mx-auto mt-40">
         <h1 className="font-bold text-center mb-10 text-2xl">
           Ordering with E-commerce - FAQ

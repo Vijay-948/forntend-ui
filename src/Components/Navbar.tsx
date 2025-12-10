@@ -12,7 +12,7 @@ import globalobject from "../Common/global-variable";
 import { getFormattedNameAndInitials } from "../Common/CommonUtil";
 // import { Link } from "react-router-dom";
 // import { username } from "../Service/user";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = () => {
@@ -55,6 +55,7 @@ const Navbar = () => {
 
   return (
     <>
+      <ToastContainer />
       <div className="fixed w-full bg-gray-800 text-white p-5 shadow-2xl  z-10 top-0">
         <nav className="hidden lg:flex justify-around items-center h-16">
           <div className="text-2xl font-semibold">
@@ -70,13 +71,12 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link
-                // onClick={() => handleProtectedClick("/product_list")}
+              <button
+                onClick={() => handleProtectedClick("/products")}
                 className="text-white font-semibold hover:text-red-500"
-                to="/products"
               >
                 Products
-              </Link>
+              </button>
             </li>
             <li>
               <button

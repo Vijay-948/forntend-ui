@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import { ToastContainer } from "react-toastify";
 
 const productList = [
   {
@@ -194,6 +195,7 @@ const ProductList = () => {
   return (
     <>
       <Navbar />
+      <ToastContainer />
       <div className="mt-40 text-center">
         <h1 className="text-4xl font-semibold mb-10 text-black">ProductList</h1>
         <div className="grid grid-clos-1 md:grid-cols-2 lg:grid-cols-4 gap-3">

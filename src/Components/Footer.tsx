@@ -27,9 +27,13 @@ const sections = [
 
 const icons = [
   { name: "Github", iconName: GitHubIcon, link: "http://www.github.com" },
-  { name: "Linkedin", iconName: LinkedInIcon, link: "http://www.github.com" },
-  { name: "Twitter", iconName: XIcon, link: "http://www.github.com" },
-  { name: "Instagram", iconName: InstagramIcon, link: "http://www.github.com" },
+  { name: "Linkedin", iconName: LinkedInIcon, link: "http://www.linkedin.com" },
+  { name: "Twitter", iconName: XIcon, link: "http://www.x.com" },
+  {
+    name: "Instagram",
+    iconName: InstagramIcon,
+    link: "http://www.instagram.com",
+  },
   {
     name: "FaceBook",
     iconName: FacebookOutlinedIcon,
