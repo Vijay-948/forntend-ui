@@ -1,7 +1,7 @@
 import { FaRegUserCircle, FaLock } from "react-icons/fa";
 import { login } from "../Service/user";
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -50,6 +50,7 @@ const Login = () => {
 
   return (
     <div className="relative flex justify-center items-center min-h-screen overflow-hidden bg-gray-900">
+      <ToastContainer />
       <div className="relative w-[420px] bg-opacity-75 border-2 border-white border-opacity-20 backdrop-blur-3xl shadow-lg text-white rounded-lg p-10 z-10">
         <Formik
           initialValues={{ email: "", password: "" }}

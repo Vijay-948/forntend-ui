@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
 import { SignUp } from "../Service/user";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
 // import img from "../Assests/Login/wood.avif";
@@ -79,6 +79,7 @@ const Register = () => {
       className="flex justify-center items-center min-h-screen bg-cover bg-center bg-gray-900"
       // style={{ backgroundImage: `url(${img})` }}
     >
+      <ToastContainer />
       <div className="w-96 bg-transparent border-2 border-white border-opacity-20 backdrop-blur-md shadow-lg text-white rounded-lg p-8 ">
         <Formik
           initialValues={initialValues}

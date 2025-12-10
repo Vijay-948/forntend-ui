@@ -10,7 +10,7 @@ import { Tilt } from "react-tilt";
 // import Testimonials from "./Testimonials";
 // import { testimonials } from "./Testimonials";
 import "../App.css";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 const slides = [
   {
@@ -100,9 +100,9 @@ const Home = () => {
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   console.log(testimonialIndex);
   const navigate = useNavigate();
-  const handleProtectedClick = (path: any) => {
+  const handleProtectedClick = (path: any, message: string) => {
     if (!token) {
-      toast.warning("Please Sign In or Sign Up to view details!", {
+      toast.warning(message, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -115,7 +115,6 @@ const Home = () => {
     navigate(path);
   };
 
-  // const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
   const prevSlide = () => {
@@ -156,6 +155,7 @@ const Home = () => {
 
   return (
     <>
+      <ToastContainer />
       <div className="max-w-[1500px] h-auto w-full m-auto py-10 px-4 relative flex flex-col justify-around items-center mt-40 rounded-md gap-15">
         <div className="flex w-full justify-between items-center">
           <ArrowBackIosNewIcon
@@ -204,7 +204,12 @@ const Home = () => {
       <div className="w-full flex justify-center mt-6">
         <button
           className="text-center bg-blue-600 text-white px-6 py-2 rounded-md"
-          onClick={() => handleProtectedClick("/products")}
+          onClick={() =>
+            handleProtectedClick(
+              "/products",
+              "Please Sign In or Sign Up to view more product details!"
+            )
+          }
         >
           View More Products
         </button>
@@ -257,7 +262,12 @@ const Home = () => {
 
         <div className="w-full flex flex-col items-center mt-8">
           <button
-            onClick={() => handleProtectedClick("/testmonials")}
+            onClick={() =>
+              handleProtectedClick(
+                "/testmonials",
+                "Please Sign In or Sign Up to view details!"
+              )
+            }
             className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
           >
             View More
