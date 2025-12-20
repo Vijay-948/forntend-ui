@@ -4,5 +4,6 @@ import axios from "axios";
 
 export const axiosClient = axios.create({
   // baseURL: 'https://backend-api-production-f78b.up.railway.app/',
-  baseURL: "http://localhost:9090",
+  // baseURL: "http://localhost:9090",
+  baseURL: "http://65.0.107.168:9090",
 });
